@@ -1,0 +1,25 @@
+{
+  "name": "grapesjs-start-with-npm",
+  "version": "1.0.0",
+  "description": "GrapesJS 使用 npm 包管理的基础示例",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "grapesjs",
+    "editor",
+    "npm",
+    "vite"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "grapesjs": "^0.21.7"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

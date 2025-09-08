@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS NPM 示例</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .setup-info {
+        background-color: #e7f3ff;
+        padding: 15px;
+        border-bottom: 1px solid #bee5eb;
+        font-size: 14px;
+        color: #0c5460;
+      }
+
+      .setup-info code {
+        background-color: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS NPM 示例</div>
+
+    <div class="setup-info">
+      <strong>项目设置：</strong>
+      本示例使用 npm 包管理器和 Vite 构建工具。运行 <code>npm install</code> 安装依赖，然后运行 <code>npm run dev</code> 启动开发服务器。
+    </div>
+
+    <div class="instructions">
+      <strong>使用说明：</strong>
+      这是一个使用 npm 包管理的 GrapesJS 编辑器示例。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- 引入主要的 JavaScript 文件 -->
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

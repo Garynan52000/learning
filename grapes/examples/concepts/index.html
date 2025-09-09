@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrapesJS 核心概念演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .concept-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .concept-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .concept-card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .concept-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .concept-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .concept-features li {
+            color: #555;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .concept-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .demo-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+        
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .footer p {
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .learning-path {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .learning-path h4 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .learning-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .learning-step {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .step-number {
+            background: white;
+            color: #667eea;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .concepts-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .concept-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 GrapesJS 核心概念演示</h1>
+            <p>通过交互式演示深入了解 GrapesJS 的四大核心概念：Components（组件）、Blocks（块）、Canvas（画布）和 Panels（面板）。每个演示都包含详细的说明、实际操作和 API 示例。</p>
+        </div>
+        
+        <div class="concepts-grid">
+            <div class="concept-card">
+                <span class="concept-icon">🧩</span>
+                <h2>Components 组件系统</h2>
+                <p>了解 GrapesJS 组件系统的工作原理，包括组件的创建、识别、渲染和自定义。</p>
+                <ul class="concept-features">
+                    <li>组件的解析和识别机制</li>
+                    <li>内置组件类型展示</li>
+                    <li>自定义组件类型定义</li>
+                    <li>组件事件和生命周期</li>
+                    <li>Components API 演示</li>
+                </ul>
+                <a href="components/index.html" class="demo-button">查看 Components 演示</a>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-icon">🧱</span>
+                <h2>Blocks 块管理器</h2>
+                <p>探索 Block Manager 的功能，学习如何创建和管理可重用的内容块。</p>
+                <ul class="concept-features">
+                    <li>Block Manager 配置</li>
+                    <li>不同类型的块内容</li>
+                    <li>程序化块管理</li>
+                    <li>自定义块创建</li>
+                    <li>块事件处理</li>
+                </ul>
+                <a href="blocks/index.html" class="demo-button">查看 Blocks 演示</a>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-icon">🎨</span>
+                <h2>Canvas 画布系统</h2>
+                <p>深入了解画布的工作机制，包括拖拽、缩放、坐标系统和画布事件。</p>
+                <ul class="concept-features">
+                    <li>画布缩放和坐标控制</li>
+                    <li>拖拽系统演示</li>
+                    <li>画布事件监听</li>
+                    <li>自定义拖拽功能</li>
+                    <li>Canvas API 使用</li>
+                </ul>
+                <a href="canvas/index.html" class="demo-button">查看 Canvas 演示</a>
+            </div>
+            
+            <div class="concept-card">
+                <span class="concept-icon">🎛️</span>
+                <h2>Panels 面板系统</h2>
+                <p>学习面板系统的配置和使用，包括面板管理、按钮配置和自定义UI。</p>
+                <ul class="concept-features">
+                    <li>面板管理器使用</li>
+                    <li>动态面板创建</li>
+                    <li>自定义按钮配置</li>
+                    <li>面板事件处理</li>
+                    <li>Panels API 演示</li>
+                </ul>
+                <a href="panels/index.html" class="demo-button">查看 Panels 演示</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>🚀 学习建议</h3>
+            <p>建议按照以下顺序学习这些核心概念，每个概念都是后续学习的基础。通过实际操作和代码示例，你将能够深入理解 GrapesJS 的架构和设计理念。</p>
+            
+            <div class="learning-path">
+                <h4>📚 推荐学习路径</h4>
+                <div class="learning-steps">
+                    <div class="learning-step">
+                        <div class="step-number">1</div>
+                        <h5>Components</h5>
+                        <p>理解组件系统的基础概念</p>
+                    </div>
+                    <div class="learning-step">
+                        <div class="step-number">2</div>
+                        <h5>Blocks</h5>
+                        <p>学习如何管理可重用内容</p>
+                    </div>
+                    <div class="learning-step">
+                        <div class="step-number">3</div>
+                        <h5>Canvas</h5>
+                        <p>掌握画布的交互机制</p>
+                    </div>
+                    <div class="learning-step">
+                        <div class="step-number">4</div>
+                        <h5>Panels</h5>
+                        <p>构建自定义用户界面</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

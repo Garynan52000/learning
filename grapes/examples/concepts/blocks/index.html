@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrapesJS Blocks 概念演示</title>
+    <script src="https://unpkg.com/grapesjs"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .demo-container {
+            display: flex;
+            height: 100vh;
+        }
+        .info-panel {
+            width: 300px;
+            background: #f5f5f5;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+        }
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blocks-panel {
+            height: 200px;
+            background: #fafafa;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        #gjs {
+            flex: 1;
+        }
+        .concept-title {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .concept-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        .concept-section h3 {
+            margin: 0 0 10px 0;
+            color: #2c5aa0;
+            font-size: 14px;
+        }
+        .concept-section p {
+            margin: 5px 0;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .code-example {
+            background: #f8f8f8;
+            padding: 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 11px;
+            margin: 5px 0;
+        }
+        .blocks-info {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .blocks-panel h4 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        .gjs-blocks-c {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gjs-block {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: white;
+            transition: all 0.2s;
+        }
+        .gjs-block:hover {
+            border-color: #2196F3;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+        }
+        .gjs-block-label {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .block-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="info-panel">
+            <div class="concept-title">Blocks 核心概念</div>
+            
+            <div class="concept-section">
+                <h3>1. 块管理器概述</h3>
+                <p>Block Manager 管理可重用的内容块，用户可以拖拽这些块到画布中创建组件。</p>
+                <div class="code-example">editor.BlockManager.add('my-block', {...})</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>2. 块的内容类型</h3>
+                <p>• <strong>组件导向</strong>: 使用组件定义</p>
+                <p>• <strong>HTML字符串</strong>: 直接HTML内容</p>
+                <p>• <strong>混合模式</strong>: 组件+样式</p>
+                <div class="code-example">content: { type: 'text', content: 'Hello' }</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>3. 块的属性</h3>
+                <p>• <strong>id</strong>: 唯一标识符</p>
+                <p>• <strong>label</strong>: 显示名称</p>
+                <p>• <strong>content</strong>: 块内容</p>
+                <p>• <strong>category</strong>: 分类</p>
+                <p>• <strong>attributes</strong>: HTML属性</p>
+                <div class="code-example">category: 'Basic', media: '📝'</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>4. 程序化使用</h3>
+                <p>可以通过API动态添加、删除和管理块。</p>
+                <div class="code-example">blockManager.get('my-block')</div>
+            </div>
+
+            <div class="blocks-info" id="blocks-info">
+                <strong>块管理器状态:</strong>
+                <div id="blocks-details">加载中...</div>
+            </div>
+        </div>
+        
+        <div class="editor-container">
+            <div class="blocks-panel">
+                <h4>可用块 (拖拽到下方画布)</h4>
+                <div id="blocks"></div>
+            </div>
+            <div id="gjs"></div>
+        </div>
+    </div>
+
+    <script src="./blocks-demo.js"></script>
+</body>
+</html>

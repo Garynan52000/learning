@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrapesJS Canvas 概念演示</title>
+    <script src="https://unpkg.com/grapesjs"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .demo-container {
+            display: flex;
+            height: 100vh;
+        }
+        .info-panel {
+            width: 300px;
+            background: #f5f5f5;
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+        }
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .canvas-controls {
+            height: 60px;
+            background: #fafafa;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        #gjs {
+            flex: 1;
+        }
+        .concept-title {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .concept-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+        }
+        .concept-section h3 {
+            margin: 0 0 10px 0;
+            color: #2c5aa0;
+            font-size: 14px;
+        }
+        .concept-section p {
+            margin: 5px 0;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .code-example {
+            background: #f8f8f8;
+            padding: 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 11px;
+            margin: 5px 0;
+        }
+        .canvas-info {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .control-button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        .control-button:hover {
+            background: #1976D2;
+        }
+        .control-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .zoom-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .zoom-slider {
+            width: 100px;
+        }
+        .coords-display {
+            font-family: monospace;
+            font-size: 12px;
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+        .canvas-events {
+            max-height: 150px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 11px;
+        }
+        .event-log {
+            margin: 2px 0;
+            padding: 2px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="info-panel">
+            <div class="concept-title">Canvas 核心概念</div>
+            
+            <div class="concept-section">
+                <h3>1. 画布概述</h3>
+                <p>Canvas 是 GrapesJS 的编辑区域，提供可视化的页面编辑环境。</p>
+                <div class="code-example">editor.Canvas.setZoom(50)</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>2. 缩放功能</h3>
+                <p>支持画布缩放，方便在不同尺寸下编辑内容。</p>
+                <p>• 缩放范围: 10% - 200%</p>
+                <p>• 平滑缩放动画</p>
+                <div class="code-example">canvas.getZoom() // 获取当前缩放</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>3. 坐标系统</h3>
+                <p>画布使用坐标系统来定位元素和处理拖拽操作。</p>
+                <div class="code-example">canvas.setCoords(100, 100)</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>4. 拖拽系统</h3>
+                <p>支持组件的拖拽操作，包括自定义拖拽源。</p>
+                <div class="code-example">canvas.startDrag({content: '...'})</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>5. 画布事件</h3>
+                <p>监听各种画布事件，如拖拽、缩放、坐标变化等。</p>
+                <div class="code-example">editor.on('canvas:zoom', () => {...})</div>
+            </div>
+
+            <div class="canvas-info" id="canvas-info">
+                <strong>画布状态:</strong>
+                <div id="canvas-details">加载中...</div>
+            </div>
+
+            <div class="concept-section">
+                <h3>事件日志</h3>
+                <div class="canvas-events" id="event-log"></div>
+            </div>
+        </div>
+        
+        <div class="editor-container">
+            <div class="canvas-controls">
+                <div class="zoom-control">
+                    <label>缩放:</label>
+                    <input type="range" class="zoom-slider" id="zoom-slider" 
+                           min="10" max="200" value="100" step="10">
+                    <span id="zoom-display">100%</span>
+                </div>
+                
+                <button class="control-button" id="reset-zoom">重置缩放</button>
+                <button class="control-button" id="center-canvas">居中画布</button>
+                <button class="control-button" id="refresh-canvas">刷新画布</button>
+                
+                <div class="coords-display" id="coords-display">坐标: (0, 0)</div>
+            </div>
+            
+            <div id="gjs"></div>
+        </div>
+    </div>
+
+    <script src="./canvas-demo.js"></script>
+</body>
+</html>

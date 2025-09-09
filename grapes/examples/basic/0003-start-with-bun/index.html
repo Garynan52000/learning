@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS Bun 示例</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .setup-info {
+        background-color: #fff3cd;
+        padding: 15px;
+        border-bottom: 1px solid #ffeaa7;
+        font-size: 14px;
+        color: #856404;
+      }
+
+      .setup-info code {
+        background-color: #f8f9fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+      }
+
+      .bun-badge {
+        display: inline-block;
+        background: linear-gradient(45deg, #fbf0df, #f4e4bc);
+        color: #8b4513;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      GrapesJS Bun 示例
+      <span class="bun-badge">🥟 Powered by Bun</span>
+    </div>
+
+    <div class="setup-info">
+      <strong>🚀 Bun 运行时特性:</strong>
+      <ul>
+        <li>使用 <code>bun install</code> 安装依赖 - 比 npm 快 25x</li>
+        <li>使用 <code>bun run dev</code> 启动开发服务器 - 支持热重载</li>
+        <li>使用 <code>bun build</code> 构建生产版本 - 内置打包器</li>
+        <li>原生支持 TypeScript 和 JSX - 无需额外配置</li>
+      </ul>
+    </div>
+
+    <div class="instructions">
+      <strong>使用说明:</strong>
+      拖拽左侧组件到中央画布，在右侧面板调整样式。支持响应式设计预览和本地存储。
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- 使用 ES 模块导入 main.js -->
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

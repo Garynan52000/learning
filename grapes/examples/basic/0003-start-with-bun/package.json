@@ -1,0 +1,31 @@
+{
+  "name": "grapesjs-start-with-bun",
+  "version": "1.0.0",
+  "description": "GrapesJS 使用 Bun 运行时和包管理的基础示例",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot main.js",
+    "start": "bun run main.js",
+    "build": "bun build main.js --outdir ./dist --target browser",
+    "serve": "bun run server.js"
+  },
+  "keywords": [
+    "grapesjs",
+    "editor",
+    "bun",
+    "javascript",
+    "visual-editor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "grapesjs": "^0.21.7"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}

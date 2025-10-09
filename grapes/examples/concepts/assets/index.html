@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Assets</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Assets</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>在本节中，您将了解如何设置并充分利用GrapesJS中的内置资产管理器。资产管理器轻量级，核心仅实现了一个图像功能，但正如您接下来将看到的，扩展和创建自己的资产类型非常容易：</strong>
+      <a href="https://grapesjs.com/docs/modules/Assets.html#asset-manager">文档</a>
+      <br>
+      <br>
+      <strong>资源上传：</strong>
+      <a href="https://grapesjs.com/docs/modules/Assets.html#uploading-assets">文档</a>
+      <br>
+      <br>
+      <strong>资源监听：</strong>
+      <a href="https://grapesjs.com/docs/modules/Assets.html#listeners">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 资产管理器默认情况下已准备好工作，因此传递几个URL以查看它们被加载。
+        assetManager: {
+          assets: [
+            'http://placehold.it/350x250/78c5d6/fff/image1.jpg',
+            // 传入一个包含自定义属性的对象
+            {
+              // 你可以传递任何你想要的自定义属性
+              category: 'c1',
+              type: 'image',
+              src: 'http://placehold.it/350x250/459ba8/fff/image2.jpg',
+              height: 350,
+              width: 250,
+              name: 'displayName',
+            },
+            {
+              category: 'c2',
+              // 由于 'image' 是资源的基础类型，省略时默认会被设置为 `image`
+              src: 'http://placehold.it/350x250/79c267/fff/image3.jpg',
+              height: 350,
+              width: 250,
+              name: 'displayName'
+            },
+          ],
+        }
+      });
+    </script>
+  </body>
+</html>

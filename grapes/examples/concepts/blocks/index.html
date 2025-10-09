@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Blocks</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Blocks</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>在本指南中，您将了解如何设置并充分利用GrapesJS内置的区块管理器界面。 默认界面是一个轻量级组件，具有内置的拖放支持，但正如您将在本指南中看到的，扩展并创建自己的UI管理器非常容易。文档：</strong>
+      <a href="https://grapesjs.com/docs/modules/Blocks.html#block-manager">特性文档</a>
+      <br>
+      <br>
+      <strong>重要警告：</strong>
+      <a href="https://grapesjs.com/docs/modules/Blocks.html#important-caveats">文档</a>
+      <br>
+      <br>
+      <strong>API 风格：</strong>
+      <a href="https://grapesjs.com/docs/modules/Blocks.html#programmatic-usage">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        blockManager: {
+          blocks: [
+            { label: 'value1-EXT', content: { type: 'js-basic', prop1: 'value1-EXT' } },
+            { label: 'value2-EXT', content: { type: 'js-basic', prop1: 'value2-EXT' } },
+            {
+              label: 'HTML String',
+              content: `<div class="el-X">
+                <div class="el-Y el-A">Element A</div>
+                <div class="el-Y el-B">Element B</div>
+                <div class="el-Y el-C">Element C</div>
+              </div>`
+            }
+          ],
+        }
+      });
+
+      // 定义一个新的自定义组件
+      editor.Components.addType('js-basic', {
+        model: {
+          defaults: {
+            prop1: 'value1',
+            'script-props': [ 'prop1' ],
+            script: function (props) {
+              // 这是我们的自定义脚本（避免使用箭头函数）
+              alert(`这是一个组件 JS 基础示例，prop1: ${props.prop1}`);
+              // 通过 this 指向访问组件实例
+              this.innerHTML = `这是一个组件 JS 基础示例，prop1: ${props.prop1}`;
+            },
+            // 添加一些样式，仅用于让组件可见
+            style: {
+              width: '100px',
+              height: '100px',
+              color: '#ffffff',
+              background: 'red',
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

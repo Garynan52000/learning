@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Components & JS</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Components & JS</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>下面示例展示了如何在 GrapesJS 组件中编写 JS 脚本：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components-js.html#components-js">组件 JS 文档</a>
+      <br>
+      <br>
+      <strong>注意编辑器运行在 iframe 之中，JS 脚本需要在 iframe 中执行，请重点注意脚本的作用域问题：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components-js.html#important-caveat">组件 JS 文档 - 重要注意事项</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs"
+      });
+
+      // 定义一个新的自定义组件
+      editor.Components.addType('js-basic', {
+        model: {
+          defaults: {
+            script: function () {
+              // 这是我们的自定义脚本（避免使用箭头函数）
+              alert('Hi');
+              // 通过 this 指向访问组件实例
+              this.innerHTML = '这是一个组件 JS 基础示例';
+              // this 绑定到组件元素
+              console.log('元素', this);
+            },
+            // 添加一些样式，仅用于让组件可见
+            style: {
+              width: '100px',
+              height: '100px',
+              color: '#ffffff',
+              background: 'red',
+            },
+          },
+        },
+      });
+
+      editor.Components.addType('js-with-props', {
+        model: {
+          defaults: {
+            // 定义自定义属性的默认值
+            propName: 'Wrold',
+            // 通过 traits 定义组件的属性面板，从而修改自定义属性
+            traits: [
+              {
+                type: 'text',
+                label: '属性名',
+                name: 'propName',
+                changeProp: true,
+              },
+            ],
+            // 定义要传递到脚本方法中的的属性（这也会在属性更改时重置脚本）
+            'script-props': [ 'propName' ],
+            script: function (props) {
+              // 现在，如果你尝试改变特性，你还会看到脚本如何被新更新的属性触发。
+              alert('Hi ' + props.propName);
+              this.innerHTML = '这是一个组件 JS 示例，名称为：' + props.propName;
+            },
+            // 添加一些样式，仅用于让组件可见
+            style: {
+              width: '100px',
+              height: '100px',
+              color: '#ffffff',
+              background: 'blue',
+            },
+          },
+        },
+      });
+
+      // 为该组件创建一个块，方便拖拽
+      editor.Blocks.add('js-basic-block', {
+        label: '组件 JS 基础示例',
+        attributes: { class: 'fa fa-text' },
+        content: { type: 'js-basic' },
+      });
+
+      // 为该组件创建一个块，方便拖拽
+      editor.Blocks.add('js-with-props-block', {
+        label: '组件 JS props 传递示例 ',
+        attributes: { class: 'fa fa-text' },
+        content: { type: 'js-with-props' },
+      });
+    </script>
+  </body>
+</html>

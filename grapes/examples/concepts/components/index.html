@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Components</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Components</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>下面的组件数据结构（简化了部分内容）是：</strong>
+<pre>{
+  tagName: 'div',
+  components: [
+    {
+      type: 'image',
+      attributes: { src: 'https://path/image' },
+    }, {
+      tagName: 'span',
+      type: 'text',
+      attributes: { title: 'foo' },
+      components: [{
+        type: 'textnode',
+        content: 'Hello world!!!'
+      }]
+    }
+  ]
+}</pre>
+      <strong>内置组件类型：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#built-in-component-types" target="_blank">点击查看</a>
+      <br>
+      <strong>组件识别和组件类型栈：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#component-recognition-and-component-type-stack" target="_blank">点击查看</a>
+      <br>
+      <strong>JSX 语法支持：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#setup-jsx-syntax" target="_blank">点击查看</a>
+      <br>
+      <strong>创建组件：</strong>
+<pre>const components = editor.addComponents(`
+  &lt;img src="https://path/image" /&gt;
+  &lt;p title="foo"&gt;Hello world!!!&lt;/p&gt;
+`);</pre>
+      <strong>访问组件数据：</strong>
+<pre>
+// 获取组件属性，如：获取组件类型。
+const firstComponentType = components[0].get('type'); // eg. 'image'
+// 设置组件属性，如：禁用可拖拽。
+// 禁用可拖拽
+components[0].set('draggable', false);
+// 获取组件 HTML 字符串
+const componentHTML = component.toHTML();
+// 获取组件 JSON 字符串（组件实现了 toJSON 方法）
+const componentJSON = JSON.stringify(component);
+</pre>
+      <strong>Component API：</strong>
+      每个组件都可以定义自己的属性和方法，但它们至少都会扩展默认的组件（然后你会看到如何创建新的自定义组件以及如何扩展已经定义的），因此最好查看 <a href="https://grapesjs.com/docs/api/component.html" target="_blank">Component API</a> 以了解所有可用的属性和方法。
+      <br>
+      <strong>组件渲染：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#component-rendering" target="_blank">点击查看</a>
+      <br>
+      <strong>通过插件添加自定义组件类型：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#define-custom-component-type" target="_blank">点击查看</a>
+      <br>
+      <strong>isComponent 如何工作：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#iscomponent" target="_blank">点击查看</a>
+      <br>
+      <strong>Model：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#model" target="_blank">点击查看</a>
+      <br>
+      <strong>获取和更新模型数据：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#read-and-update-the-model" target="_blank">点击查看</a>
+      <br>
+      <strong>监听属性变化：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#listen-to-property-changes" target="_blank">点击查看</a>
+      <br>
+      <strong>组件视图：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#view" target="_blank">点击查看</a>
+      <br>
+      <strong>更新组件类型：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#update-component-type" target="_blank">点击查看</a>
+      <br>
+      <strong>扩展组件类型：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#extend-component-type" target="_blank">点击查看</a>
+      <br>
+      <strong>扩展父函数：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#extend-parent-functions" target="_blank">点击查看</a>
+      <br>
+      <strong>组件生命周期钩子：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#lifecycle-hooks" target="_blank">点击查看</a>
+      <br>
+      <strong>组件 CSS：</strong>
+      <a href="https://grapesjs.com/docs/modules/Components.html#components-css" target="_blank">点击查看</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 通过插件添加自定义组件类型
+      const myNewComponentTypes = (editor) => {
+        const domc = editor.DomComponents;
+        domc.addType('my-input-type', {
+          // Make the editor understand when to bind `my-input-type`
+          isComponent: (el) => el.tagName === 'INPUT',
+
+          // Model definition
+          model: {
+            // Default properties
+            defaults: {
+              tagName: 'input',
+              draggable: 'form, form *', // Can be dropped only inside `form` elements
+              droppable: false, // Can't drop other elements inside
+              attributes: {
+                // Default attributes
+                type: 'text',
+                name: 'default-name',
+                placeholder: 'Insert text here',
+              },
+              traits: ['name', 'placeholder', { type: 'checkbox', name: 'required' }],
+            },
+          },
+        });
+        domc.addType('cmp-a', {
+          model: {
+            defaults: {
+              attributes: { class: 'cmp-css-a' },
+              components: 'Component A',
+              styles: `
+                .cmp-css-a { color: green }
+                @media (max-width: 992px) {
+                  .cmp-css-a { color: darkgreen }
+                }
+              `,
+            },
+          },
+        });
+        domc.addType('cmp-b', {
+          model: {
+            defaults: {
+              attributes: { class: 'cmp-css-b' },
+              components: 'Component B',
+              styles: `
+                .cmp-css-b { color: blue }
+                @media (max-width: 992px) {
+                  .cmp-css-b { color: darkblue }
+                }
+              `,
+            },
+          },
+        });
+        domc.addType('component-css', {
+          model: {
+            defaults: {
+              attributes: { class: 'cmp-css' },
+              components: ['<span>Component with styles<span>', { type: 'cmp-a' }, { type: 'cmp-b' }],
+              styles: `
+                .cmp-css { color: red }
+                @media (max-width: 992px) {
+                  .cmp-css{ color: darkred; }
+                }
+              `,
+            },
+          },
+        });
+      };
+    </script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        plugins: [
+          // 插件：添加自定义组件类型
+          myNewComponentTypes
+        ],
+      });
+      // 创建组件
+      const components = editor.addComponents([
+        `
+          <img src="https://img-game.yy.com/f2e/activity/ssfh/assets/imgs/yy/%E9%9D%93%E5%8F%B7%E7%9A%87%E6%97%8F.png" />
+          <p title="foo">Hello world!!!</p>
+          <input>
+        `,
+        { type: 'component-css' }
+      ]);
+      console.log('components: ', components);
+      // 获取组件类型
+      console.log('components[0]: ', components[0].get('type')); // 'image'
+      // 禁用可拖拽
+      components[0].set('draggable', false);
+      console.log('components[0].get("draggable"): ', components[0].get("draggable")); // false
+      // 获取组件 HTML 字符串
+      console.log('components[0].toHTML(): ', components[0].toHTML());
+      // 获取组件 JSON 字符串（组件实现了 toJSON 方法）
+      console.log('JSON.stringify(components[0]): ', JSON.stringify(components[0]));
+    </script>
+  </body>
+</html>

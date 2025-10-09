@@ -205,6 +205,8 @@ const componentJSON = JSON.stringify(component);
       // 初始化 GrapesJS 编辑器 - 使用最简配置
       const editor = grapesjs.init({
         container: "#gjs",
+        // 禁用存储管理器
+        storageManager: false,
         plugins: [
           // 插件：添加自定义组件类型
           myNewComponentTypes

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Selector</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Selector</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>选择器允许在项目中的所有组件中重复使用样式（与HTML中的类完全一样），而选择器管理器的最主要目标是收集它们并指示当前的选择状态：</strong>
+      <a href="https://grapesjs.com/docs/modules/Selectors.html#selector-manager">文档</a>
+      <br>
+      <strong>默认情况下，选择具有类名的组件将指示其选择器作为目标样式。这意味着在样式管理器中的任何更改都将应用于包含这些所选类的所有组件。如果您需要选择单个组件作为样式目标，您可以启用“组件优先”选项：</strong>
+      <a href="https://grapesjs.com/docs/modules/Selectors.html#component-first-selectors">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 禁用存储管理器
+        storageManager: false,
+        components: `
+          <div class="class-a">Element A</div>
+          <div class="class-a class-b">Element A-B</div>
+          <div class="class-a class-b class-c">Element A-B-C</div>
+        `,
+        style: `
+          .class-a { color: red }
+          .class-b { color: green }
+          .class-c { color: blue }
+        `,
+      });
+    </script>
+  </body>
+</html>

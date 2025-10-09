@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Commands</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Commands</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>命令模块的主要目标是集中化功能并在整个编辑器中轻松复用。使用命令的另一个大优势是可以跟踪它们，扩展甚至在一些条件下中断：</strong>
+      <a href="https://grapesjs.com/docs/modules/Commands.html#commands">文档</a>
+      <br>
+      <br>
+      <strong>默认命令：</strong>
+      <a href="https://grapesjs.com/docs/modules/Commands.html#default-commands">文档</a>
+      <br>
+      <br>
+      <strong>有状态命令：</strong>
+      <a href="https://grapesjs.com/docs/modules/Commands.html#stateful-commands">文档</a>
+      <br>
+      <br>
+      <strong>扩展命令：</strong>
+      <a href="https://grapesjs.com/docs/modules/Commands.html#extending">文档</a>
+      <br>
+      <br>
+      <strong>命令事件：</strong>
+      <a href="https://grapesjs.com/docs/modules/Commands.html#events">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 禁用存储管理器
+        storageManager: false,
+        commands: {
+          defaults: [
+            {
+              // id 和 run 在这种情况下是必需的
+              id: 'cmd-1',
+              run(editor) {
+                alert('命令 1 被执行了');
+                editor.Modal.open({
+                  title: 'Modal example',
+                  content: 'My content',
+                }).onceClose(() => this.stopCommand());
+              },
+              stop(editor) {
+                editor.Modal.close();
+              },
+            }
+          ],
+        }
+      });
+
+      // API 风格的定义
+      const commands = editor.Commands;
+      commands.add('cmd-2', (editor) => {
+        alert('命令 2 被执行了');
+      });
+
+      // 命令参数
+      commands.add('cmd-3', (
+        editor, 
+        // 第二个参数“发送者”只是表示谁请求了命令，在我们的例子中，它始终是“编辑器”。
+        sender, 
+        options = {}
+      ) => {
+        alert(`命令 3 被执行了，参数值为 ${options.some}`);
+      });
+
+      commands.add('cmd-4', {
+        someFunction1() {
+          alert('This is function 1');
+        },
+        someFunction2() {
+          alert('This is function 2');
+        },
+        run() {
+          this.someFunction1();
+          this.someFunction2();
+        },
+      });
+
+      // 拓展命令 cmd-3
+      commands.extend('cmd-4', {
+        someFunction2() {
+          alert('This is function 2 extended');
+        },
+      });
+
+      // 执行命令
+      setTimeout(() => {        
+        editor.runCommand('cmd-1');
+        editor.runCommand('cmd-2');
+        editor.runCommand('cmd-3', { some: '123' });
+        editor.runCommand('cmd-4');
+      }, 1000);
+    </script>
+  </body>
+</html>

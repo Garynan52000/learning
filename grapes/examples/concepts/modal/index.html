@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Modal</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Modal</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>模态模块允许轻松地在对话窗口中显示内容：</strong>
+      <a href="https://grapesjs.com/docs/modules/Modal.html#modal">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 禁用存储管理器
+        storageManager: false,
+      });
+    </script>
+  </body>
+</html>

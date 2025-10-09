@@ -208,66 +208,178 @@
     <div class="container">
         <div class="header">
             <h1>🎨 GrapesJS 核心概念演示</h1>
-            <p>通过交互式演示深入了解 GrapesJS 的四大核心概念：Components（组件）、Blocks（块）、Canvas（画布）和 Panels（面板）。每个演示都包含详细的说明、实际操作和 API 示例。</p>
+            <p>通过交互式演示深入了解 GrapesJS 的核心概念，涵盖 Components（组件）、Blocks（块）、Commands（命令）、Plugins（插件）、Pages（页面）、Modal（模态）、Style（样式）、Traits（特征）、Storage（存储）、Selector（选择器）、i18n（国际化）、Layer（图层）、Assets（资源）以及 Components 与 JS 交互等模块。</p>
         </div>
         
         <div class="concepts-grid">
-            <div class="concept-card">
-                <span class="concept-icon">🧩</span>
-                <h2>Components 组件系统</h2>
-                <p>了解 GrapesJS 组件系统的工作原理，包括组件的创建、识别、渲染和自定义。</p>
-                <ul class="concept-features">
-                    <li>组件的解析和识别机制</li>
-                    <li>内置组件类型展示</li>
-                    <li>自定义组件类型定义</li>
-                    <li>组件事件和生命周期</li>
-                    <li>Components API 演示</li>
-                </ul>
-                <a href="components/index.html" class="demo-button">查看 Components 演示</a>
-            </div>
-            
-            <div class="concept-card">
-                <span class="concept-icon">🧱</span>
-                <h2>Blocks 块管理器</h2>
-                <p>探索 Block Manager 的功能，学习如何创建和管理可重用的内容块。</p>
-                <ul class="concept-features">
-                    <li>Block Manager 配置</li>
-                    <li>不同类型的块内容</li>
-                    <li>程序化块管理</li>
-                    <li>自定义块创建</li>
-                    <li>块事件处理</li>
-                </ul>
-                <a href="blocks/index.html" class="demo-button">查看 Blocks 演示</a>
-            </div>
-            
-            <div class="concept-card">
-                <span class="concept-icon">🎨</span>
-                <h2>Canvas 画布系统</h2>
-                <p>深入了解画布的工作机制，包括拖拽、缩放、坐标系统和画布事件。</p>
-                <ul class="concept-features">
-                    <li>画布缩放和坐标控制</li>
-                    <li>拖拽系统演示</li>
-                    <li>画布事件监听</li>
-                    <li>自定义拖拽功能</li>
-                    <li>Canvas API 使用</li>
-                </ul>
-                <a href="canvas/index.html" class="demo-button">查看 Canvas 演示</a>
-            </div>
-            
-            <div class="concept-card">
-                <span class="concept-icon">🎛️</span>
-                <h2>Panels 面板系统</h2>
-                <p>学习面板系统的配置和使用，包括面板管理、按钮配置和自定义UI。</p>
-                <ul class="concept-features">
-                    <li>面板管理器使用</li>
-                    <li>动态面板创建</li>
-                    <li>自定义按钮配置</li>
-                    <li>面板事件处理</li>
-                    <li>Panels API 演示</li>
-                </ul>
-                <a href="panels/index.html" class="demo-button">查看 Panels 演示</a>
-            </div>
-        </div>
+             <div class="concept-card">
+                 <span class="concept-icon">🧩</span>
+                 <h2>Components 组件</h2>
+                 <p>了解 GrapesJS 组件系统的工作原理，包括组件的创建、识别、渲染和自定义。</p>
+                 <ul class="concept-features">
+                     <li>组件创建与配置</li>
+                     <li>自定义组件类型</li>
+                     <li>组件事件与生命周期</li>
+                 </ul>
+                 <a href="components/index.html" class="demo-button">查看 Components 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🔗</span>
+                 <h2>Components & JS 组件与JavaScript</h2>
+                 <p>演示如何在组件与外部 JS 之间进行事件与数据的交互。</p>
+                 <ul class="concept-features">
+                     <li>动态属性更新</li>
+                     <li>事件桥接</li>
+                     <li>外部脚本集成</li>
+                 </ul>
+                 <a href="componentsAndJs/index.html" class="demo-button">查看 Components&JS 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🏷️</span>
+                 <h2>Traits 特质</h2>
+                 <p>通过 Traits 为组件提供可编辑的属性与校验。</p>
+                 <ul class="concept-features">
+                     <li>属性编辑器</li>
+                     <li>动态校验</li>
+                     <li>Traits API</li>
+                 </ul>
+                 <a href="traits/index.html" class="demo-button">查看 Traits 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🧱</span>
+                 <h2>Blocks 块</h2>
+                 <p>探索 Block Manager 的功能，学习如何创建和管理可重用的内容块。</p>
+                 <ul class="concept-features">
+                     <li>Block 管理与注册</li>
+                     <li>可复用内容块</li>
+                     <li>自定义块样式</li>
+                 </ul>
+                 <a href="blocks/index.html" class="demo-button">查看 Blocks 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🗂️</span>
+                 <h2>Assets 资产</h2>
+                 <p>管理图片与静态资源，并在画布中使用。</p>
+                 <ul class="concept-features">
+                     <li>资源库管理</li>
+                     <li>图片上传</li>
+                     <li>资源引用</li>
+                 </ul>
+                 <a href="assets/index.html" class="demo-button">查看 Assets 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">⚙️</span>
+                 <h2>Commands 命令</h2>
+                 <p>学习如何注册、执行和管理编辑器命令，以及绑定快捷键。</p>
+                 <ul class="concept-features">
+                     <li>命令注册与执行</li>
+                     <li>键盘快捷键</li>
+                     <li>命令事件监听</li>
+                 </ul>
+                 <a href="commands/index.html" class="demo-button">查看 Commands 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🌐</span>
+                 <h2>I18n i18n</h2>
+                 <p>为编辑器添加多语言支持与动态切换。</p>
+                 <ul class="concept-features">
+                     <li>多语言字典</li>
+                     <li>文本翻译</li>
+                     <li>动态语言切换</li>
+                 </ul>
+                 <a href="i18n/index.html" class="demo-button">查看 i18n 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🎯</span>
+                 <h2>Selectors 选择器</h2>
+                 <p>管理和构建选择器，控制样式应用范围与特异性。</p>
+                 <ul class="concept-features">
+                     <li>选择器构建</li>
+                     <li>特异性控制</li>
+                     <li>选择器 API</li>
+                 </ul>
+                 <a href="selector/index.html" class="demo-button">查看 Selector 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🧬</span>
+                 <h2>Layers 层</h2>
+                 <p>使用图层面板管理组件的层级、选中与排序。</p>
+                 <ul class="concept-features">
+                     <li>层级与选区</li>
+                     <li>拖拽排序</li>
+                     <li>图层面板</li>
+                 </ul>
+                 <a href="layer/index.html" class="demo-button">查看 Layer 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">📄</span>
+                 <h2>Pages 页面</h2>
+                 <p>掌握多页面的创建、切换与管理。</p>
+                 <ul class="concept-features">
+                     <li>多页面管理</li>
+                     <li>页面切换</li>
+                     <li>页面存储</li>
+                 </ul>
+                 <a href="pages/index.html" class="demo-button">查看 Pages 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🎨</span>
+                 <h2>Style Manager 样式管理器</h2>
+                 <p>通过 Style Manager 管理组件样式与属性。</p>
+                 <ul class="concept-features">
+                     <li>Style Manager 配置</li>
+                     <li>变量与单位</li>
+                     <li>样式分组</li>
+                 </ul>
+                 <a href="style/index.html" class="demo-button">查看 Style 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">💾</span>
+                 <h2>Storage Manager 存储管理器</h2>
+                 <p>了解如何将编辑器数据保存到本地或远端。</p>
+                 <ul class="concept-features">
+                     <li>本地存储</li>
+                     <li>远端存储</li>
+                     <li>自动保存策略</li>
+                 </ul>
+                 <a href="storage/index.html" class="demo-button">查看 Storage 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🪟</span>
+                 <h2>Modal 模态</h2>
+                 <p>学习如何使用内置模态框展示自定义内容。</p>
+                 <ul class="concept-features">
+                     <li>模态框弹窗</li>
+                     <li>打开/关闭控制</li>
+                     <li>自定义内容</li>
+                 </ul>
+                 <a href="modal/index.html" class="demo-button">查看 Modal 演示</a>
+             </div>
+ 
+             <div class="concept-card">
+                 <span class="concept-icon">🔌</span>
+                 <h2>Plugins 插件</h2>
+                 <p>了解如何通过插件扩展 GrapesJS 的功能和界面。</p>
+                 <ul class="concept-features">
+                     <li>插件加载与卸载</li>
+                     <li>插件配置</li>
+                     <li>扩展点与集成</li>
+                 </ul>
+                 <a href="plugins/index.html" class="demo-button">查看 Plugins 演示</a>
+             </div>
+         </div>
         
         <div class="footer">
             <h3>🚀 学习建议</h3>

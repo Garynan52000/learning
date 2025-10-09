@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Storage Manager</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Storage Manager</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>存储管理器是一个内置模块，允许您持久化项目数据：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#storage-manager">文档</a>
+      <br>
+      <br>
+      <strong>项目数据：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#project-data">文档</a>
+      <br>
+      <br>
+      <strong>存储策略：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#storage-strategy">文档</a>
+      <br>
+      <br>
+      <strong>设置本地存储：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#setup-local-storage">文档</a>
+      <br>
+      <br>
+      <strong>设置远程存储：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#setup-remote-storage">文档</a>
+      <br>
+      <br>
+      <strong>服务端设置：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#setup-server">文档</a>
+      <br>
+      <br>
+      <strong>定义新的存储方式：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#define-new-storage">文档</a>
+      <br>
+      <br>
+      <strong>扩展存储方式。除了其他需求之外，您可能需要使用现有的存储设备，以便在更复杂的用例中将它们结合起来。例如，假设我们希望在另一个存储设备中混合本地和远程存储设备：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#extend-storage">文档</a>
+      <br>
+      <br>
+      <strong>HTML 代码与项目数据：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#html-code-with-project-data">文档</a>
+      <br>
+      <br>
+      <strong>事件：</strong>
+      <a href="https://grapesjs.com/docs/modules/Storage.html#events">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 默认配置
+        storageManager: {
+          type: 'local', // 存储类型。可选：local | remote
+          autosave: true, // 自动保存数据
+          autoload: true, // 初始化时自动加载已存储的数据
+          stepsBeforeSave: 1, // 如果启用自动保存，表示触发存储方法前需要的更改次数
+          // ...
+          // 默认存储选项
+          options: {
+            local: {/* ... */},
+            remote: {/* ... */},
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

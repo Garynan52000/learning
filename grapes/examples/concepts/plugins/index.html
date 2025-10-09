@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS concepts of Plugins</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS concepts of Plugins</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>在GrapesJS中创建插件非常简单，在这里你将学会如何实现它：</strong>
+      <a href="https://grapesjs.com/docs/modules/Plugins.html#plugins">文档</a>
+      <br>
+      <br>
+      <strong>使用 TypeScript 编写插件：</strong>
+      <a href="https://grapesjs.com/docs/modules/Plugins.html#usage-with-ts">文档</a>
+      <br>
+      <br>
+      <strong>模板：</strong>
+      <a href="https://grapesjs.com/docs/modules/Plugins.html#boilerplate">文档</a>
+      <br>
+      <br>
+      <strong>为了快速开发插件，我们强烈建议使用 grapesjs-cli（打开新窗口），它有助于避免设置所有依赖项和配置的麻烦，无论是用于开发还是构建（无需接触 Webpack 或 Babel 配置）。有关更多信息，请查看仓库：</strong>
+      <a href="https://github.com/GrapesJS/cli">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 禁用存储管理器
+        storageManager: false,
+      });
+    </script>
+  </body>
+</html>

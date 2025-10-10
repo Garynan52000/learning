@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS Plugin - grapesjs-parser-postcss</title>
+    <!-- GrapesJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .header {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .instructions {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">GrapesJS Plugin - grapesjs-parser-postcss</div>
+
+    <div class="instructions">
+      <strong>说明：</strong>
+      这是一个 GrapesJS 组件概念演示。你可以在画布中拖拽、编辑和删除组件。
+      双击文本可以编辑内容，选中元素可以在右侧面板中修改样式。
+      <br>
+      <br>
+      <strong>插件用途：</strong>
+      grapesjs-parser-postcss 插件用于在 GrapesJS 编辑器中解析和处理 PostCSS 样式，让你能够更方便地编写和管理高级 CSS 语法。
+      <br>
+      <br>
+      <strong>插件文档：</strong>
+      <a href="https://github.com/GrapesJS/parser-postcss">文档</a>
+    </div>
+
+    <!-- GrapesJS 编辑器容器 -->
+    <div id="gjs"></div>
+
+    <!-- GrapesJS JavaScript -->
+    <script src="https://unpkg.com/grapesjs"></script>
+    <script src="https://unpkg.com/grapesjs-parser-postcss"></script>
+    <script>
+      // 初始化 GrapesJS 编辑器 - 使用最简配置
+      const editor = grapesjs.init({
+        container: "#gjs",
+        // 禁用存储管理器
+        storageManager: false,
+        plugins: ['grapesjs-parser-postcss'],
+        components: [
+          {
+            type: 'text',
+            tagName: 'p',
+            content: 'Hello world!!!',
+            style: {
+              'background-color': '#f0f0f0',
+            },
+            attributes: {
+              class: 'hello-world',
+            },
+          }
+        ],
+      });
+    </script>
+  </body>
+</html>

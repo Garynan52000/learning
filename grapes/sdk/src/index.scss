@@ -1,0 +1,13 @@
+html, body, div, ul, ol, li, p, h1, h2, h3, h4, h5, h6, iframe, a {
+  margin: 0;
+  outline: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  list-style: none;
+  text-decoration: none;
+}
+
+html, body, #root {
+  height: 100%;
+}

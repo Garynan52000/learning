@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@grapesjs/react": "^2.0.0",
+    "grapesjs": "^0.22.13",
     "preact": "^10.26.5"
   },
   "devDependencies": {

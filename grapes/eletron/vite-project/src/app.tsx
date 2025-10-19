@@ -3,13 +3,11 @@ import grapesjs from 'grapesjs';
 import zh from 'grapesjs/locale/zh';
 import GjsEditor from '@grapesjs/react';
 import type { Editor } from 'grapesjs';
+import Root from './components/root';
 
 export default function App() {
   const onEditor = (editor: Editor) => {
     console.log('Editor loaded', { editor });
-    editor.addComponents([
-      
-    ])
   };
 
   return (
@@ -29,12 +27,18 @@ export default function App() {
           }
         },
         storageManager: false,
-        components: [
-          `<h1><span>标题</span></h1>`,
-          {
-            type: 'image',
-            attributes: { src: 'https://img-game.yy.com/f2e/activity/ssfh/assets/imgs/yy/%E9%9D%93%E5%8F%B7%E7%9A%87%E6%97%8F.png' },
+        domComponents: {
+          processor: (obj) => {
+            // 这里可以解析组件
+            return {
+              type: 'text',
+              tagName: 'h1',
+              content: 'hello world',
+            };
           }
+        },
+        components: [
+          <Root />
         ] as any
       }}
       onEditor={onEditor}

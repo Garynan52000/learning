@@ -29,15 +29,21 @@ export default function App() {
         storageManager: false,
         domComponents: {
           processor: (obj) => {
-            // 这里可以解析组件
-            return {
-              type: 'text',
-              tagName: 'h1',
-              content: 'hello world',
-            };
+            if (obj.$$typeof === Symbol.for('react.element')) {
+              // react vdom
+              return {
+                type: 'text',
+                tagName: 'h1',
+                content: 'react component',
+              };
+            }
+            // return obj;
           }
         },
         components: [
+          { something: 'something' },
+          '<div>grapes component</div>',
+          <div>test</div>,
           <Root />
         ] as any
       }}

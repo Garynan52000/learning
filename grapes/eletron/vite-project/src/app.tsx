@@ -31,6 +31,7 @@ function convertVdomToGrapesComponent(obj: any): any {
     } else if (typeof vdom === 'object' && vdom) {
       const { children: _children, ..._props } = vdom.props;
       let _type = 'default';
+      const _tagName = vdom.type;
       const _components = Array.isArray(_children) ? flatArrary(_children) : _children;
       switch (true) {
         case typeof _components === 'string' || typeof _components === 'number':
@@ -43,7 +44,7 @@ function convertVdomToGrapesComponent(obj: any): any {
           _type = 'default';
           break;
       }
-      return { ..._props, type: _type, components: _components };
+      return { ..._props, type: _type, tagName: _tagName, components: _components };
     } else {
       return { type: 'textnode', content: '' };
     }

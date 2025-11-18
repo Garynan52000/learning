@@ -4,11 +4,35 @@ import zh from 'grapesjs/locale/zh';
 import GjsEditor from '@grapesjs/react';
 import type { Editor } from 'grapesjs';
 import Root from './components/root';
-import Body from './components/body';
+
+function isReactObject(obj: any): boolean {
+  return obj && obj.$$typeof === Symbol.for('react.element');
+}
+
+function isReactComonent(obj: any): boolean {
+  if (!isReactObject(obj)) {
+    return false;
+  }
+  return typeof obj.type === 'function';
+}
+
+function isReactClassComponent(obj: any): boolean {
+  if (!isReactComonent(obj)) {
+    return false;
+  }
+  return obj.type.prototype && obj.type.prototype.isReactComponent;
+}
+
+function isReactFunctionComponent(obj: any): boolean {
+  if (!isReactComonent(obj)) {
+    return false;
+  }
+  return !isReactClassComponent(obj);
+}
 
 // 将 React 虚拟 DOM 转换为 GrapesJS 组件格式
 function convertVdomToGrapesComponent(obj: any): any {
-  if (obj.$$typeof === Symbol.for('react.element')) {
+  if (isReactObject(obj)) {
     // react obj
     debugger;
     let vdom;
@@ -90,14 +114,10 @@ export default function App() {
           }
         },
         storageManager: false,
-        domComponents: {
-          processor: convertVdomToGrapesComponent
-        },
         components: [
           { something: 'something' },
           '<div>grapes component</div>',
           <Root />,
-          <Body />
         ] as any
       }}
       onEditor={onEditor}

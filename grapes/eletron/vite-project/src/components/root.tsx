@@ -1,15 +1,8 @@
-import Body from "./body"
-import Footer from "./footer"
-import Header from "./header"
-
 export default function Root() {
-  return (
-    <section>
-      <Header />
-      <Body />
-      <Footer />
-    </section>
-  )
+  return <>
+    <div>1</div>
+    <div>2</div>
+  </>
 }
 
 export {

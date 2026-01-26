@@ -2,9 +2,11 @@
   "name": "bun-benchmark",
   "version": "1.0.0",
   "description": "Benchmark for bun vs npm vs yarn vs pnpm",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "benchmark": "bun run src/benchmark.ts",
+    "test": "bun test"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -37,5 +39,7 @@
     "pg": "^8.11.3",
     "mysql2": "^3.6.3",
     "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
   }
 }

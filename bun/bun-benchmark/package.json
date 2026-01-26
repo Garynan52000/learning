@@ -1,13 +1,7 @@
 {
   "name": "bun-benchmark",
   "version": "1.0.0",
-  "description": "Benchmark for bun vs npm vs yarn vs pnpm",
-  "type": "module",
   "main": "index.js",
-  "scripts": {
-    "benchmark": "bun run src/benchmark.ts",
-    "test": "bun test"
-  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,6 +34,15 @@
     "mysql2": "^3.6.3",
     "sequelize": "^6.33.0"
   },
+  "description": "Benchmark for bun vs npm vs yarn vs pnpm",
+  "scripts": {
+    "start": "bun run benchmark",
+    "benchmark": "bun run src/benchmark.ts",
+    "rebuild-report": "bun run src/rebuild-report.ts",
+    "test": "bun test"
+  },
+  "type": "module",
   "devDependencies": {
+    "@types/bun": "^1.3.6"
   }
 }

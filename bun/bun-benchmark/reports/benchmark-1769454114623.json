@@ -1,0 +1,137 @@
+{
+  "timestamp": "2026-01-26T19:01:54.623Z",
+  "toolVersions": {
+    "bun": "1.2.8",
+    "npm": "10.2.4",
+    "yarn": "1.22.22",
+    "pnpm": "10.15.1",
+    "node": "v22.6.0",
+    "bunRuntime": "1.2.8"
+  },
+  "warm": {
+    "timestamp": "2026-01-26T19:01:54.623Z",
+    "environment": {
+      "platform": "win32",
+      "arch": "x64",
+      "bunVersion": "1.2.8",
+      "nodeVersion": "v22.6.0"
+    },
+    "results": [
+      {
+        "command": "npm install",
+        "label": "npm Warm",
+        "stat": {
+          "meanMs": 29965.484060000024,
+          "stddevMs": 8897.450490544063,
+          "minMs": 24759.538700000034,
+          "maxMs": 47739.95280000009,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      },
+      {
+        "command": "yarn install",
+        "label": "Yarn Warm",
+        "stat": {
+          "meanMs": 21430.226219999953,
+          "stddevMs": 11692.007465440318,
+          "minMs": 15428.97359999991,
+          "maxMs": 44812.27789999999,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      },
+      {
+        "command": "bun install",
+        "label": "Bun Warm",
+        "stat": {
+          "meanMs": 13129.598720000078,
+          "stddevMs": 172.8662200464984,
+          "minMs": 12996.954900000012,
+          "maxMs": 13471.620700000087,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      },
+      {
+        "command": "pnpm install",
+        "label": "pnpm Warm",
+        "stat": {
+          "meanMs": 10918.533279999998,
+          "stddevMs": 101.12614309302614,
+          "minMs": 10790.996799999848,
+          "maxMs": 11076.270199999912,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      }
+    ]
+  },
+  "cold": {
+    "timestamp": "2026-01-26T19:01:54.623Z",
+    "environment": {
+      "platform": "win32",
+      "arch": "x64",
+      "bunVersion": "1.2.8",
+      "nodeVersion": "v22.6.0"
+    },
+    "results": [
+      {
+        "command": "npm install",
+        "label": "npm Cold",
+        "stat": {
+          "meanMs": 36957.263699999996,
+          "stddevMs": 7755.940852727677,
+          "minMs": 32580.468699999998,
+          "maxMs": 52445.6771,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      },
+      {
+        "command": "yarn install",
+        "label": "Yarn Cold",
+        "stat": {
+          "meanMs": 29926.585620000016,
+          "stddevMs": 3013.4591347490423,
+          "minMs": 26977.892999999982,
+          "maxMs": 35386.898600000015,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      },
+      {
+        "command": "bun install",
+        "label": "Bun Cold",
+        "stat": {
+          "meanMs": 16891.28825999999,
+          "stddevMs": 1718.4269744983499,
+          "minMs": 15644.799699999974,
+          "maxMs": 20254.368799999997,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      },
+      {
+        "command": "pnpm install",
+        "label": "pnpm Cold",
+        "stat": {
+          "meanMs": 21133.346919999993,
+          "stddevMs": 8041.106255976161,
+          "minMs": 15373.796499999939,
+          "maxMs": 36399.239500000025,
+          "runs": 5,
+          "successRuns": 5
+        },
+        "errors": []
+      }
+    ]
+  }
+}

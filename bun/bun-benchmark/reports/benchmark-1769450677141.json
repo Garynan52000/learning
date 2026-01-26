@@ -1,0 +1,131 @@
+{
+  "timestamp": "2026-01-26T18:04:37.140Z",
+  "warm": {
+    "timestamp": "2026-01-26T18:04:37.140Z",
+    "environment": {
+      "platform": "win32",
+      "arch": "x64",
+      "bunVersion": "1.2.8",
+      "nodeVersion": "v22.6.0"
+    },
+    "results": [
+      {
+        "command": "bun install",
+        "label": "Bun Warm",
+        "stat": {
+          "meanMs": 14820.079600000001,
+          "stddevMs": 0,
+          "minMs": 14820.079600000001,
+          "maxMs": 14820.079600000001,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      },
+      {
+        "command": "pnpm install",
+        "label": "pnpm Warm",
+        "stat": {
+          "meanMs": 11991.3514,
+          "stddevMs": 0,
+          "minMs": 11991.3514,
+          "maxMs": 11991.3514,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      },
+      {
+        "command": "yarn install",
+        "label": "Yarn Warm",
+        "stat": {
+          "meanMs": 26882.87139999999,
+          "stddevMs": 0,
+          "minMs": 26882.87139999999,
+          "maxMs": 26882.87139999999,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": [
+          "[warmup 1] Failed with exit code 1"
+        ]
+      },
+      {
+        "command": "npm install",
+        "label": "npm Warm",
+        "stat": {
+          "meanMs": 23960.79819999999,
+          "stddevMs": 0,
+          "minMs": 23960.79819999999,
+          "maxMs": 23960.79819999999,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      }
+    ]
+  },
+  "cold": {
+    "timestamp": "2026-01-26T18:04:37.140Z",
+    "environment": {
+      "platform": "win32",
+      "arch": "x64",
+      "bunVersion": "1.2.8",
+      "nodeVersion": "v22.6.0"
+    },
+    "results": [
+      {
+        "command": "bun install",
+        "label": "Bun Cold",
+        "stat": {
+          "meanMs": 19033.34519999998,
+          "stddevMs": 0,
+          "minMs": 19033.34519999998,
+          "maxMs": 19033.34519999998,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      },
+      {
+        "command": "pnpm install",
+        "label": "pnpm Cold",
+        "stat": {
+          "meanMs": 25617.264800000004,
+          "stddevMs": 0,
+          "minMs": 25617.264800000004,
+          "maxMs": 25617.264800000004,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      },
+      {
+        "command": "yarn install",
+        "label": "Yarn Cold",
+        "stat": {
+          "meanMs": 27507.427999999985,
+          "stddevMs": 0,
+          "minMs": 27507.427999999985,
+          "maxMs": 27507.427999999985,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      },
+      {
+        "command": "npm install",
+        "label": "npm Cold",
+        "stat": {
+          "meanMs": 36903.013800000015,
+          "stddevMs": 0,
+          "minMs": 36903.013800000015,
+          "maxMs": 36903.013800000015,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      }
+    ]
+  }
+}

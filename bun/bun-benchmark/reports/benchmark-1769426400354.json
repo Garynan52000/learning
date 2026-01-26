@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-01-26T11:20:00.353Z",
+  "warm": {
+    "timestamp": "2026-01-26T11:20:00.354Z",
+    "environment": {
+      "platform": "win32",
+      "arch": "x64",
+      "bunVersion": "1.2.8",
+      "nodeVersion": "v22.6.0"
+    },
+    "results": [
+      {
+        "command": "bun install",
+        "label": "Bun Warm",
+        "stat": {
+          "meanMs": null,
+          "stddevMs": null,
+          "minMs": null,
+          "maxMs": null,
+          "runs": 0,
+          "successRuns": 0
+        },
+        "errors": [
+          "[warmup 1] Failed with exit code 1",
+          "[run 1] Failed with exit code 1"
+        ]
+      },
+      {
+        "command": "npm install",
+        "label": "npm Warm",
+        "stat": {
+          "meanMs": 29873.14540000001,
+          "stddevMs": 0,
+          "minMs": 29873.14540000001,
+          "maxMs": 29873.14540000001,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      }
+    ]
+  },
+  "cold": {
+    "timestamp": "2026-01-26T11:20:00.354Z",
+    "environment": {
+      "platform": "win32",
+      "arch": "x64",
+      "bunVersion": "1.2.8",
+      "nodeVersion": "v22.6.0"
+    },
+    "results": [
+      {
+        "command": "bun install",
+        "label": "Bun Cold",
+        "stat": {
+          "meanMs": 13442.4752,
+          "stddevMs": 0,
+          "minMs": 13442.4752,
+          "maxMs": 13442.4752,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      },
+      {
+        "command": "npm install",
+        "label": "npm Cold",
+        "stat": {
+          "meanMs": 31440.318700000018,
+          "stddevMs": 0,
+          "minMs": 31440.318700000018,
+          "maxMs": 31440.318700000018,
+          "runs": 1,
+          "successRuns": 1
+        },
+        "errors": []
+      }
+    ]
+  }
+}

@@ -45,7 +45,13 @@ async function execOnce(cmd: string, opts: Options): Promise<{ ms: number; ok: b
     if (opts.cwd) p.cwd(opts.cwd);
     if (opts.env) p.env(opts.env);
     const timeout = opts.timeoutMs ?? 0;
-    const res = timeout > 0 ? await p.withTimeout(timeout).quiet() : await p.quiet();
+    const res =
+      timeout > 0
+        ? await Promise.race([
+            p,
+            new Promise<never>((_, reject) => setTimeout(() => reject(new Error("Timeout")), timeout)),
+          ])
+        : await p;
     const end = nowMs();
     // bun $ returns an object with exitCode
     const ok = res.exitCode === 0;
@@ -75,15 +81,18 @@ export async function hyperfine(commands: Array<{ cmd: string; label?: string }>
   const results: RunResult[] = [];
 
   for (const c of commands) {
+    console.log(`Running benchmark for: ${c.label || c.cmd}`);
     const errors: string[] = [];
     // warmup
     for (let i = 0; i < warmup; i++) {
+      console.log(`  Warmup ${i + 1}/${warmup}...`);
       const r = await execOnce(c.cmd, options);
       if (!r.ok && r.err) errors.push(`[warmup ${i + 1}] ${r.err}`);
     }
     const samples: number[] = [];
     let successRuns = 0;
     for (let i = 0; i < runs; i++) {
+      console.log(`  Run ${i + 1}/${runs}...`);
       if (options.prepare) {
         await options.prepare();
       }

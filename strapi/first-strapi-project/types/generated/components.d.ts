@@ -32,6 +32,8 @@ export interface SharedRichText extends Struct.ComponentSchema {
   };
   attributes: {
     body: Schema.Attribute.RichText;
+    defaultColor: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
   };
 }
 

@@ -7,6 +7,7 @@
         "@strapi/plugin-cloud": "5.45.0",
         "@strapi/plugin-color-picker": "^5.45.1",
         "@strapi/plugin-users-permissions": "5.45.0",
+        "@strapi/provider-email-nodemailer": "^5.46.0",
         "@strapi/strapi": "5.45.0",
         "better-sqlite3": "12.8.0",
         "fs-extra": "^10.0.0",
@@ -562,6 +563,8 @@
     "@strapi/plugin-color-picker": ["@strapi/plugin-color-picker@5.45.1", "", { "dependencies": { "@strapi/design-system": "2.2.0", "@strapi/icons": "2.2.0", "react-colorful": "5.6.1", "react-intl": "6.6.2" }, "peerDependencies": { "@strapi/strapi": "^5.0.0", "react": "^17.0.0 || ^18.0.0", "react-dom": "^17.0.0 || ^18.0.0", "react-router-dom": "^6.30.3", "styled-components": "^6.0.0" } }, "sha512-nsbbnqCkXlFN+RKeb/N1sdvpPUga7Gy4c8d1NR0UiAWLyCjeris4hoGYwmmKzLfI8IRr8rN0Bs6H0dGTkrtp8w=="],
 
     "@strapi/plugin-users-permissions": ["@strapi/plugin-users-permissions@5.45.0", "", { "dependencies": { "@strapi/design-system": "2.2.0", "@strapi/icons": "2.2.0", "@strapi/utils": "5.45.0", "bcryptjs": "2.4.3", "formik": "2.4.5", "grant": "5.4.24", "immer": "9.0.21", "jsonwebtoken": "9.0.0", "jwk-to-pem": "2.0.7", "koa": "2.16.4", "koa2-ratelimit": "^1.1.3", "lodash": "4.18.1", "prop-types": "^15.8.1", "purest": "4.0.2", "react-intl": "6.6.2", "react-query": "3.39.3", "react-redux": "8.1.3", "url-join": "4.0.1", "yup": "0.32.9", "zod": "3.25.67" }, "peerDependencies": { "@strapi/strapi": "^5.0.0", "react": "^17.0.0 || ^18.0.0", "react-dom": "^17.0.0 || ^18.0.0", "react-router-dom": "^6.30.3", "styled-components": "^6.0.0" } }, "sha512-ts0AyHo6opA5PZAU/QxciB1jFg1dxZSgJ9lrLTeWG4C5qtLihgv7icqzTV9cqMarVzLwDWab4AoqCc0lGrQlKA=="],
+
+    "@strapi/provider-email-nodemailer": ["@strapi/provider-email-nodemailer@5.46.0", "", { "dependencies": { "nodemailer": "8.0.5" } }, "sha512-FzglMyZzgy9nxtr8Qot/m1p+YeA0yhDgfjovui8rwiusGRCXB/ddsDd7iBmFDJeMLzxt2mpXElXqubmbtvGSyA=="],
 
     "@strapi/provider-email-sendmail": ["@strapi/provider-email-sendmail@5.45.0", "", { "dependencies": { "@strapi/utils": "5.45.0", "sendmail": "^1.6.1" } }, "sha512-atGpB6bNW2L5fjTbcqTpWbg2t+gDWLuAZwtPbidPr/dftf8n7YNqN3tvck3qbhNkYbasTDr999d1hiY9Hkmt1Q=="],
 
@@ -1846,6 +1849,8 @@
     "node-releases": ["node-releases@2.0.38", "", {}, "sha512-3qT/88Y3FbH/Kx4szpQQ4HzUbVrHPKTLVpVocKiLfoYvw9XSGOX2FmD2d6DrXbVYyAQTF2HeF6My8jmzx7/CRw=="],
 
     "node-schedule": ["node-schedule@2.1.1", "", { "dependencies": { "cron-parser": "^4.2.0", "long-timeout": "0.1.1", "sorted-array-functions": "^1.3.0" } }, "sha512-OXdegQq03OmXEjt2hZP33W2YPs/E5BcFQks46+G2gAxs4gHOIVD1u7EqlYLYSKsaIpyKCK9Gbk0ta1/gjRSMRQ=="],
+
+    "nodemailer": ["nodemailer@8.0.5", "", {}, "sha512-0PF8Yb1yZuQfQbq+5/pZJrtF6WQcjTd5/S4JOHs9PGFxuTqoB/icwuB44pOdURHJbRKX1PPoJZtY7R4VUoCC8w=="],
 
     "nodemailer-fetch": ["nodemailer-fetch@1.6.0", "", {}, "sha512-P7S5CEVGAmDrrpn351aXOLYs1R/7fD5NamfMCHyi6WIkbjS2eeZUB/TkuvpOQr0bvRZicVqo59+8wbhR3yrJbQ=="],
 

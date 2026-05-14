@@ -19,6 +19,7 @@
     "@strapi/plugin-cloud": "5.45.0",
     "@strapi/plugin-color-picker": "^5.45.1",
     "@strapi/plugin-users-permissions": "5.45.0",
+    "@strapi/provider-email-nodemailer": "^5.46.0",
     "@strapi/strapi": "5.45.0",
     "better-sqlite3": "12.8.0",
     "fs-extra": "^10.0.0",

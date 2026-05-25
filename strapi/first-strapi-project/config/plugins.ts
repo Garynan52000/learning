@@ -1,6 +1,28 @@
 import type { Core } from '@strapi/strapi';
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
+  'users-permissions': {
+    config: {
+      jwtManagement: 'refresh',
+      sessions: {
+        accessTokenLifespan: 604800, // 1 week (default)
+        maxRefreshTokenLifespan: 2592000, // 30 days
+        idleRefreshTokenLifespan: 604800, // 7 days
+        httpOnly: false, // Set to true for HTTP-only cookies
+        cookie: {
+          name: 'strapi_up_refresh',
+          sameSite: 'lax',
+          path: '/',
+          secure: false, // true in production
+        },
+      },
+      ratelimit: {
+        enabled: true,
+        interval: { min: 5 },
+        max: 5,
+      },
+    },
+  },
   email: {
     config: {
       provider: "nodemailer",

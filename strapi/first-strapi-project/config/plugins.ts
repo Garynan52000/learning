@@ -16,6 +16,9 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
           secure: false, // true in production
         },
       },
+      register: {
+        allowedFields: ["nickname"],
+      },
       ratelimit: {
         enabled: true,
         interval: { min: 5 },

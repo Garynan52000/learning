@@ -43,7 +43,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
     description: '';
     displayName: 'Seo';
     icon: 'allergies';
-    name: 'Seo';
   };
   attributes: {
     metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;

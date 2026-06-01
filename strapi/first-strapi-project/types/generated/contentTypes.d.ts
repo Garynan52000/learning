@@ -563,6 +563,10 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    restaurants: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::restaurant.restaurant'
+    >;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -685,6 +689,7 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     categories: Schema.Attribute.Relation<
       'manyToMany',
       'api::category.category'

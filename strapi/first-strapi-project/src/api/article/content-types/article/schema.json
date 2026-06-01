@@ -81,6 +81,12 @@
         "shared.rich-text",
         "shared.slider"
       ]
+    },
+    "restaurants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::restaurant.restaurant",
+      "inversedBy": "articles"
     }
   }
 }

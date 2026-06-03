@@ -47,6 +47,19 @@ const loadSwaggerUiAssets = async () => {
     'swagger-ui-css',
     'https://unpkg.com/swagger-ui-dist@5.0.0/swagger-ui.css'
   );
+  (() => {
+    if (document.getElementById('swagger-ui-css-override')) {
+      return;
+    }
+    const _style = document.createElement('style');
+    _style.id = 'swagger-ui-css-override';
+    _style.innerHTML = `
+      .swagger-ui.swagger-container .topbar {
+        display: none !important;
+      }
+    `;
+    document.getElementsByTagName('head')?.[0]?.appendChild(_style);
+  })();
   await loadScript(
     'swagger-ui-bundle',
     'https://unpkg.com/swagger-ui-dist@5.0.0/swagger-ui-bundle.js'

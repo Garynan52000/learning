@@ -1,6 +1,10 @@
 import type { Core } from '@strapi/strapi';
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
+  'openapi-docs': {
+    enabled: true,
+    resolve: './src/plugins/openapi-docs',
+  },
   'users-permissions': {
     config: {
       jwtManagement: 'refresh',

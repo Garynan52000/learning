@@ -6,11 +6,14 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Server =>
   app: {
     keys: env.array('APP_KEYS'),
   },
+  mcp: {
+    enabled: true,
+  },
   http: {
     serverOptions: {
       requestTimeout: 10 * 60 * 1000, // 10 minutes timeout
     }
-  }
+  },
 });
 
 export default config;

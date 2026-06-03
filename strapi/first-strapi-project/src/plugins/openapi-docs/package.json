@@ -1,0 +1,11 @@
+{
+  "name": "openapi-docs",
+  "version": "0.0.1",
+  "private": true,
+  "strapi": {
+    "name": "openapi-docs",
+    "displayName": "OpenAPI 文档",
+    "description": "Admin-only OpenAPI documentation viewer"
+  }
+}
+

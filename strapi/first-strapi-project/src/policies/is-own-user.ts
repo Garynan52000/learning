@@ -1,11 +1,11 @@
 const { errors } = require('@strapi/utils');
-const { PolicyError } = errors;
+const { UnauthorizedError, PolicyError } = errors;
 
 export default (policyContext, config, { strapi }) => {
   const currentUser = policyContext.state.user;
 
   if (!currentUser) {
-    throw new PolicyError('请登录！');
+    throw new UnauthorizedError('请登录！');
   }
 
   const targetUserId = parseInt(policyContext.params.id);

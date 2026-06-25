@@ -1,4 +1,5 @@
 import type { Core } from '@strapi/strapi';
+import cronTasks from "./cron-tasks";
 
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Server => ({
   host: env('HOST', '0.0.0.0'),
@@ -13,6 +14,10 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Server =>
     serverOptions: {
       requestTimeout: 10 * 60 * 1000, // 10 minutes timeout
     }
+  },
+  cron: {
+    enabled: true,
+    tasks: cronTasks,
   },
 });
 

@@ -3,7 +3,7 @@
 export default {
   myJob1: {
     task: ({ strapi }) => {
-      console.log("每日 0 点执行一次！");
+      console.log("每日 12 点执行一次！");
     },
     options: {
       /*
@@ -23,34 +23,27 @@ export default {
         - a-b ：范围
         - a,b,c ：枚举多个值
       */
-      rule: "0 0 0 * * *",
+      rule: "0 0 12 * * *",
       tz: "Asia/Shanghai",
     },
   },
   myJob2: {
     task: ({ strapi }) => {
-      console.log("每日 0 点执行一次！");
+      console.log("服务启动后 10 秒执行一次！");
     },
-    options: {
-      task: ({ strapi }) => {
-        console.log("10 秒后执行一次！");
-      },
-      // 10 秒后执行一次
-      options: new Date(Date.now() + 10000),
-      tz: "Asia/Shanghai",
-    },
+    options: new Date(Date.now() + 10000),
   },
   myJob3: {
     task: ({ strapi }) => {
-      console.log("每秒执行一次！");
+      console.log("服务启动后 20 秒到 30 秒之间每秒执行一次！");
     },
     options: {
       rule: "* * * * * *",
-      // 从 10 秒后开始执行
-      start: new Date(Date.now() + 10000),
-      // 到 20 秒后结束
-      end: new Date(Date.now() + 20000),
+      // 从 20 秒后开始执行
+      start: new Date(Date.now() + 20000),
+      // 到 30 秒后结束
+      end: new Date(Date.now() + 30000),
+      tz: "Asia/Shanghai",
     },
-    tz: "Asia/Shanghai",
   },
 };

@@ -17,6 +17,7 @@
     "doc:openapi": "strapi openapi generate --output ./docs/swagger-spec.json"
   },
   "dependencies": {
+    "@aws-sdk/rds-signer": "^3.1075.0",
     "@strapi/plugin-cloud": "5.45.0",
     "@strapi/plugin-color-picker": "5.45.0",
     "@strapi/plugin-graphql": "5.45.0",
